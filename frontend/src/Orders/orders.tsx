@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
-import data from './data'
+import data from './data';
 
 function Orders() {
 return (
@@ -23,6 +23,25 @@ return (
         <th>ACTIONS</th>
     </tr> 
 </thead>
+<tbody>
+    {data.orders.map((order) => (
+        <tr key = {order._id}>
+            <td>{order._id}</td>
+            <td>{order.createdAt}</td>
+            <td>{order.totalPrice}</td>
+            <td>{order.user.name}</td>
+            <td>{order.isPaid}</td>
+            <td>{order.paidAt}</td>
+            <td>{order.isDelivered.toString()}</td>
+            <td>{order.deliveredDate}</td>
+            <td>
+                <Link to={"/order/" + order._id} className="button secondary">
+                Details
+                </Link>
+            </td>
+        </tr>
+    ))}
+</tbody>    
 
              </table>
           </div>
